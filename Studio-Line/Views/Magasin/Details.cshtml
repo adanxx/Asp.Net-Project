@@ -1,0 +1,25 @@
+﻿@model Studio_Line.Models.Magasin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<hr />
+<h4><b>Magasin:</b> @Model.Name</h4>
+
+<ul>
+    <li> Genre : @Model.Genre.Name</li>
+    
+    <li>Realase Date: @Model.RealeaseDate.ToShortDateString()</li>
+
+    <li>Date Added: @Model.DataAdd.ToShortDateString()</li>
+
+    <li>In Stock : @Model.InStock</li>
+</ul>
+
+
+
+
+

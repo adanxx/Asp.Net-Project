@@ -1,0 +1,47 @@
+﻿@model Studio_Line.ViewModels.viewGenreModel
+@{
+    ViewBag.Title = "Create || Form";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["H1"]</h2>
+
+
+@using (Html.BeginForm("Save", "Magasin"))
+{
+
+    <div class="form-group">
+     @Html.LabelFor(c => c.magasin.Name)
+        @Html.TextBoxFor(c => c.magasin.Name, new { @class="form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.magasin.RealeaseDate )
+        @Html.TextBoxFor(c => c.magasin.RealeaseDate, "{0:d MMMM yyyy}", new { @class = "form-control" })
+    </div>
+
+     <div class="form-group">
+        @Html.LabelFor(c => c.magasin.DataAdd )
+        @Html.TextBoxFor(c => c.magasin.DataAdd, "{0:d MMMM yyyy}", new { @class = "form-control" })
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.magasin.GenreId)
+        @Html.DropDownListFor(m => m.magasin.GenreId, new SelectList(Model.GenreList, "Id", "Name"), "Select Magasin Genre", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.magasin.InStock)
+        @Html.TextBoxFor(c => c.magasin.InStock, new { @class = "form-control" })
+    </div>
+
+
+    @Html.HiddenFor(m => m.magasin.Id)
+    <button type="submit" class="btn btn-default">Save</button>
+
+    <button type="button" class="btn btn-default">@Html.ActionLink("Back", "Index", "Magasin")</button>
+
+
+}

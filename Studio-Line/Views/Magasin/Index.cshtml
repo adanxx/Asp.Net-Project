@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Studio_Line.Models.Magasin>
+
+@{
+    ViewBag.Title = "Magasins || Window ";
+}
+<br>
+<h2>Magasin List</h2>
+<br>
+<button class="btn btn-default">@Html.ActionLink("New Magasin","CreateForm","Magasin")</button>
+
+
+<table class="table-style">   
+    <thead>
+        <tr>
+            <th>Magasin</th>
+            <th>Genre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var magasin in Model)
+          {
+           <tr>
+             <td> 
+               @Html.ActionLink(magasin.Name, "Edit", "Magasin", new { id = magasin.Id }, null)
+             </td >
+             <td>@magasin.Genre.Name </td>
+          </tr>
+          }
+    </tbody>
+</table>

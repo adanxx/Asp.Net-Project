@@ -1,0 +1,51 @@
+﻿@model Studio_Line.ViewModels.NewCustomerViewModels
+
+@{
+    ViewBag.Title = "New || Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["FormTitle"]</h2>
+
+
+ @using (Html.BeginForm("SaveCustomer", "Customer"))
+ { 
+
+ <div class="form-group">
+     @Html.LabelFor(m => m.Customer.Name)
+     @Html.TextBoxFor(m => m.Customer.Name, new { @class ="form-control"})
+     @Html.ValidationMessageFor(m => m.Customer.Name)
+ </div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Customer.Email)
+    @Html.TextBoxFor(m => m.Customer.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Customer.Email)
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Customer.Birthday)
+    @Html.TextBoxFor(m => m.Customer.Birthday,"{0:d MMMM yyyy}", new { @class = "form-control" })
+</div>
+
+ <div class="form-group">
+    @Html.LabelFor(m => m.Customer.MembershipTypeId)
+    @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.Memebershipstypeslist, "Id","Name"),"Select Your Memebership", new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
+</div>
+
+<div class="checkbox">
+    <label>
+        @Html.CheckBoxFor(m => m.Customer.IsSubcriptedToNewsLetter) Do You want Subscripe to Our News Letter?
+    </label>
+</div>
+      @Html.HiddenFor(m =>m.Customer.Id )
+     <button type="submit" class="btn btn-primary"> Save</button>
+
+    <button type="button" class="btn btn-light">@Html.ActionLink("Back", "Index", "Customer")</button>
+ }
+
+@*Adding Clientside-validation by attching the bundleconfig path in our view.model*@
+@section scripts{
+     @Scripts.Render("~/bundles/jqueryval")
+    }

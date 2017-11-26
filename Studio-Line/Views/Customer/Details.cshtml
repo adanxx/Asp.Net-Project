@@ -1,0 +1,23 @@
+﻿@model Studio_Line.Models.Customers
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<hr/>
+ <h4><b>Customer Name:</b> @Model.Name</h4>
+<ul>   
+    <li>Email: @Model.Email</li>
+
+@if (Model.Birthday.HasValue)
+       {
+          <li> Birthdate: @Model.Birthday.Value.ToShortDateString() </li >
+       }
+    
+    <li>MembershipType : @Model.MembershipType.Name</li>   
+</ul>
+
+<button type="button" class="btn-details">
+    @Html.ActionLink("Back to List", "Index")
+</button>
