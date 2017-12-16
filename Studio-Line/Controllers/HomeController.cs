@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Studio_Line.Controllers
 {
+    [AllowAnonymous] // Adding a filter that allow unlogged-user to view Home-page
     public class HomeController : Controller
     {
         public ActionResult Index()

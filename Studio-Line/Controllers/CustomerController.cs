@@ -10,6 +10,7 @@ using System.Data.Entity.Validation;
 
 namespace Studio_Line.Controllers
 {
+    [Authorize] //Adding asp.identity attribute/filter to contrain-access
     public class CustomerController : Controller
     {
         private ApplicationDbContext _contextDb;

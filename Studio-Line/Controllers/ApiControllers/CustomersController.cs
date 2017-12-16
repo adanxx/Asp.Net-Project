@@ -18,6 +18,7 @@ namespace Studio_Line.Controllers.ApiControllers
         }
 
         //Get api/Customers
+        [Route("api/Customers/GetCustomers")]
         public IEnumerable<Customers> GetCustomers()
         {
             var customers = _contextDb.Customers.ToList();
@@ -25,6 +26,7 @@ namespace Studio_Line.Controllers.ApiControllers
         }
 
         //Get: api/Customers/id
+        [Route("api/GetCustomerById/{id}")]
         public Customers GetCustomers(int Id)
         {
             var customers = _contextDb.Customers.SingleOrDefault(c => c.Id == Id);
@@ -39,7 +41,7 @@ namespace Studio_Line.Controllers.ApiControllers
 
         //Post: api/Customers
         [HttpPost]
-        // Can use a build in asp convention and rename the method PostSomthing and remove the HttpPost-attribute at the top
+        //can use a build in asp-convention and rename the method PostSomthing and remove the HttpPost-attribute at the top
         public Customers PostCustomer(Customers customer)
         {
             if(!ModelState.IsValid)
