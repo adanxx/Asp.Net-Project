@@ -280,6 +280,10 @@
     <Compile Include="Migrations\201711251637488_UpdateMemberShipError&amp;AndRequireDataAnnotation.Designer.cs">
       <DependentUpon>201711251637488_UpdateMemberShipError&amp;AndRequireDataAnnotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712170845058_SeedUsers.cs" />
+    <Compile Include="Migrations\201712170845058_SeedUsers.Designer.cs">
+      <DependentUpon>201712170845058_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customers.cs" />
@@ -288,6 +292,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Magasin.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\UserRoles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\NewCustomerViewModels.cs" />
@@ -358,6 +363,7 @@
     <Content Include="Views\Magasin\Details.cshtml" />
     <Content Include="Views\Customer\NewFormCustomer.cshtml" />
     <Content Include="Views\Magasin\CreateForm.cshtml" />
+    <Content Include="Views\Customer\ViewOnList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -429,6 +435,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711251637488_UpdateMemberShipError&amp;AndRequireDataAnnotation.resx">
       <DependentUpon>201711251637488_UpdateMemberShipError&amp;AndRequireDataAnnotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712170845058_SeedUsers.resx">
+      <DependentUpon>201712170845058_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -28,10 +28,13 @@ namespace Studio_Line.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-
             var customers = _contextDb.Customers.Include(c => c.MembershipType).ToList();
 
-            return View(customers);
+            if (User.IsInRole(UserRoles.ManageCustomerInfo))
+            {
+                return View("Index",customers);
+            }
+            return View("ViewOnList", customers);
         }
 
         public ActionResult Details(int id)
@@ -45,6 +48,7 @@ namespace Studio_Line.Controllers
             return View(customer);
         }
 
+        [Authorize(Roles =UserRoles.ManageCustomerInfo)]
         public ActionResult NewCustomer()
         {
             ViewData["FormTitle"] = " New Customer";
@@ -109,7 +113,7 @@ namespace Studio_Line.Controllers
             return RedirectToAction("Index", "Customer");
        
         }
-
+        [Authorize(Roles = UserRoles.ManageCustomerInfo)]
         public ActionResult Edit(int Id)
         {
             ViewData["FormTitle"] = " Edit Customer";
@@ -129,7 +133,7 @@ namespace Studio_Line.Controllers
 
             return View("NewFormCustomer", viewModel);
         }
-
+        [Authorize(Roles = UserRoles.ManageCustomerInfo)]
         public ActionResult Delete(int id)
         {
             var customer = _contextDb.Customers.SingleOrDefault(c => c.Id == id);

@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Studio_Line.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Studio_Line.Controllers
 {
@@ -155,6 +156,17 @@ namespace Studio_Line.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    /*/ Assign Different role-to test our identity.role for different users.
+                    //Temp Code
+                    var roleStore = new RoleStore<IdentityRole>( new ApplicationDbContext());
+                    // Role Manager
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //Now Creating The rolemanager
+                    await roleManager.CreateAsync(new IdentityRole("ManageCustomerInfo"));
+                    //
+                    await UserManager.AddToRoleAsync(user.Id, "ManageCustomerInfo");
+                    /*/
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
